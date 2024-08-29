@@ -1,0 +1,422 @@
+@use '../../mixins/breakpoint' as *;
+@use '../../variables/_colors' as *;
+@use '../../mixins/mixins' as *;
+@use '../../base/lang-mixin' as *;
+
+@include multi-select(ru, pt, es, pl) {
+	.footer__bottom {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 10px;
+		justify-items: center;
+		.footer__policy-links {
+			.footer__link {
+				text-transform: capitalize;
+			}
+		}
+	}
+}
+
+@include lang-select(ja) {
+	.footer__section {
+		column-count: 3;
+		@include breakpointUi(lt-md) {
+			column-count: 2;
+		}
+	}
+	.footer__text {
+		@include breakpointUi(lt-md) {
+			display: block;
+		}
+	}
+	.footer a {
+		@include breakpointUi(lt-md) {
+			word-break: keep-all;
+		}
+		@include breakpointUi(xs) {
+			word-break: break-word;
+		}
+	}
+}
+@include lang-select(ko) {
+	.footer__text {
+		@include breakpointUi(lt-md) {
+			display: block;
+		}
+	}
+}
+@include not-selected(en) {
+	.footer {
+		&__section {
+			--column: 3;
+			@include breakpointUi(lt-md) {
+				--column: 2;
+			}
+		}
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+.footer {
+	height: auto;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	z-index: 500;
+	background: map-get($colors, 'header-dark');
+	padding: 54px 0 22px;
+	content-visibility: auto;
+
+	&__container-outer {
+		z-index: 20;
+		position: relative;
+		max-width: 980px;
+		width: 100%;
+		margin: 0 auto 50px;
+
+		@include breakpointUi(lt-lg) {
+			padding: 0 20px;
+		}
+
+		@include breakpointUi(lt-md) {
+			margin-bottom: 30px;
+		}
+	}
+
+	&__section {
+		--column: 4;
+		-webkit-column-count: var(--column);
+		-moz-column-count: var(--column);
+		column-count: var(--column);
+		-webkit-column-width: auto;
+		-moz-column-width: auto;
+		column-width: auto;
+		display: block;
+		gap: 75px;
+
+		@include breakpointUi(md) {
+			--column: 3;
+		}
+
+		@include breakpointUi(lt-md) {
+			--column: 2;
+			gap: 13px;
+		}
+	}
+
+	&__item {
+		margin-bottom: 45px;
+		overflow: hidden;
+
+		@include breakpointUi(lt-md) {
+			margin-bottom: 30px;
+		}
+	}
+
+	&__top-text {
+		@include text('footer-item-title', 'md', 'bold');
+		border-bottom: 1px solid transparent;
+
+		@include breakpointUi(lt-md) {
+			@include text('footer-item-title', 'sm', 'bold');
+		}
+	}
+
+	a.footer__title {
+		&:hover {
+			.footer__top-text {
+				color: map-get($colors, 'white');
+				border-bottom: 1px solid map-get($colors, 'white');
+			}
+		}
+	}
+
+	&__title {
+		display: flex;
+		align-items: center;
+		align-content: center;
+		border: none;
+		text-decoration: none;
+		margin-bottom: 15px;
+		gap: 12px;
+		transition: 200ms;
+
+		@include breakpointUi(lt-md) {
+			margin-bottom: 16px;
+		}
+
+		@include breakpointUi(lt-md) {
+			gap: 6px;
+		}
+
+		.icon {
+			$size: 25px;
+			width: $size;
+			height: $size;
+			fill: map-get($colors, 'default-icon');
+			border-radius: 4px;
+
+			@include breakpointUi(lt-md) {
+				$size: 20px;
+				width: $size;
+				height: $size;
+			}
+		}
+
+		&:hover {
+			border: none;
+			text-decoration: none;
+
+			.rt {
+				fill: map-get($colors, 'rt-tool');
+				background: map-get($colors, 'white');
+			}
+
+			.la {
+				fill: map-get($colors, 'la-tool');
+				background: map-get($colors, 'white');
+			}
+
+			.kr {
+				fill: map-get($colors, 'rt-tool');
+				background: map-get($colors, 'white');
+			}
+
+			.wa {
+				fill: map-get($colors, 'wa-tool');
+				background: map-get($colors, 'white');
+			}
+
+			.seo-s {
+				fill: map-get($colors, 'sg-tool');
+				background: map-get($colors, 'white');
+			}
+
+			.report {
+				fill: map-get($colors, 'wa-tool');
+				background: map-get($colors, 'white');
+			}
+		}
+	}
+
+	&__links {
+		list-style-type: none;
+		padding-left: 0;
+		margin: 0;
+
+		@include breakpointUi(lt-md) {
+			flex-direction: column;
+		}
+
+		li {
+			margin-bottom: 8px;
+			line-height: 1;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&_social {
+			li {
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	&__link {
+		border: none;
+		text-decoration: none;
+		@include text('footer-item-text', 'sm');
+
+		@include breakpointUi(lt-md) {
+			@include text('footer-item-text', 'xs');
+		}
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+		&:focus,
+		&:visited {
+			color: map-get($colors, 'footer-item-text');
+		}
+
+		&:hover {
+			color: map-get($colors, 'white');
+			text-decoration: underline !important;
+			border: none;
+		}
+
+		&:active {
+			color: map-get($colors, 'footer-item-text');
+		}
+
+		&_social {
+			display: inline-flex;
+			align-items: center;
+			align-content: center;
+			gap: 9px;
+
+			.icon {
+				$size: 18px;
+				width: $size;
+				height: $size;
+				fill: map_get($colors, 'default-icon');
+
+				@include breakpointUi(lt-md) {
+					$size: 16px;
+					width: $size;
+					height: $size;
+				}
+			}
+
+			&:hover {
+				color: map-get($colors, 'white');
+				text-decoration: none;
+				border: none;
+
+				.cc {
+					fill: map_get($colors, 'sep-la');
+				}
+
+				.fb {
+					fill: map_get($colors, 'la-tool');
+				}
+
+				.youtube {
+					fill: map_get($colors, 'rt-tool');
+				}
+
+				.twitter {
+					fill: map_get($colors, 'sep-rt');
+				}
+
+				.linkedin {
+					fill: map_get($colors, 'link');
+				}
+
+				.footer__social-text {
+					text-decoration: underline !important;
+				}
+			}
+		}
+	}
+
+	&__bottom {
+		max-width: 1180px;
+		width: 100%;
+		margin: 0 auto;
+		z-index: 30;
+		position: relative;
+
+		display: flex;
+		align-items: center;
+		@include text('footer-item-text', 'xs');
+		color: map-get($colors, 'footer-item-text');
+		flex-wrap: wrap;
+		justify-content: space-between;
+		border-top: 1px solid map-get($colors, 'white-12');
+		padding-top: 20px;
+
+		@include breakpointUi(lt-lg) {
+			flex-direction: column;
+			justify-content: flex-start;
+			border: none;
+			padding: 0 20px 0;
+		}
+	}
+
+	&__policy-links {
+		display: flex;
+		gap: 20px;
+		flex-wrap: wrap;
+
+		.footer__link {
+			@include text('footer-item-text', 'xs');
+		}
+
+		@include breakpointUi(md) {
+			order: 1;
+			margin-bottom: 20px;
+			width: 100%;
+		}
+
+		@include breakpointUi(lt-md) {
+			border-top: 1px solid map-get($colors, 'white-12');
+			padding-top: 25px;
+			width: 100%;
+			display: grid;
+			row-gap: 9px;
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__copyright {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		color: map-get($colors, 'footer-item-text');
+
+		.brand-logo {
+			width: 17px;
+			height: 17px;
+			margin-left: 5px;
+
+			@include breakpointUi(lt-md) {
+				display: none;
+			}
+		}
+
+		@include breakpointUi(md) {
+			order: 2;
+			border-top: 1px solid map-get($colors, 'white-12');
+			padding-top: 20px;
+			width: 100%;
+		}
+
+		@include breakpointUi(lt-md) {
+			margin-bottom: 25px;
+			gap: 3px;
+			display: block;
+			width: 100%;
+		}
+
+		& > div {
+			@include breakpointUi(lt-md) {
+				display: inline;
+			}
+		}
+	}
+
+	&__sitename {
+		color: map-get($colors, 'footer-item-title');
+
+		@include breakpointUi(lt-md) {
+			color: map-get($colors, 'footer-item-text');
+		}
+	}
+
+	@include breakpointUi(lt-lg) {
+		overflow: hidden;
+	}
+
+	@include breakpointUi(lt-md) {
+		padding: 60px 0 30px;
+		@include text('footer-item-text', 'xs');
+	}
+}
+
+/*
+Если кто-нибудь однажды
+старый цвет вернуть захочет,
+оберните новый футер
+в блок и класс ему назначьте:
+*/
+.old-footer-bg {
+	.footer {
+		background: #303e4b;
+	}
+}

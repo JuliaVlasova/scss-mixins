@@ -1,0 +1,49 @@
+@use '../../variables/colors' as *;
+@use '../../mixins/mixins' as *;
+
+.p-warning {
+	text-align: center;
+	position: relative;
+	padding-top: 66px;
+	padding-bottom: 95px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 10;
+	background: map-get($colors, 'white');
+	width: 100%;
+	height: 100%;
+	min-height: 210px;
+	display: none;
+
+	@include breakpointUi(lt-md) {
+		padding-top: 35px;
+		padding-bottom: 60px;
+	}
+
+	&__image {
+		margin-bottom: 25px;
+	}
+
+	&__text {
+		margin: 0 auto;
+
+		&_xl {
+			@include text('secondary-dark', 'xl');
+			max-width: 728px;
+
+			@include breakpointUi(lt-md) {
+				@include text('secondary-dark', 'bg');
+				max-width: 90%;
+			}
+		}
+
+		&_bg {
+			@include text('secondary-dark', 'bg');
+			max-width: 570px;
+
+			@include breakpointUi(lt-md) {
+				max-width: 90%;
+			}
+		}
+	}
+}

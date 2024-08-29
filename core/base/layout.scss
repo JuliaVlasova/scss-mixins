@@ -1,0 +1,75 @@
+@use "../variables/breakpoints" as *;
+@use "../mixins/breakpoint" as b;
+@use "../variables/variables" as v;
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: v.$base-font-size;
+    font-family: v.$base-font-family;
+    letter-spacing: map-get(v.$text--letter-spacing, "md");
+    height: 100%;
+}
+
+body {
+    background-color: v.$color--body-bg;
+    margin: 0;
+    height: 100%;
+    display: block;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: space-between;
+    //align-items: stretch;
+    line-height: v.$base-line-height;
+    box-sizing: border-box;
+}
+
+.content-container {
+    max-width: v.$content--max-width;
+    //padding-left: v.$content--padding-h-lg;
+    //padding-right: v.$content--padding-h-lg;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: content-box;
+    // здесь должены быть стили для общего "container" с брейкпоинтами и отступами
+
+    @include b.breakpointUi(md) {
+        max-width: $point--sm;
+        padding-left: v.$content--padding-h-md;
+        padding-right: v.$content--padding-h-md;
+        box-sizing: border-box;
+    }
+
+    @include b.breakpointUi(sm) {
+        padding-left: v.$content--padding-h-sm;
+        padding-right: v.$content--padding-h-sm;
+        box-sizing: border-box;
+    }
+
+    @include b.breakpointUi(xs) {
+        padding-left: v.$content--padding-h-xs;
+        padding-right: v.$content--padding-h-xs;
+        box-sizing: border-box;
+    }
+}
+svg {
+    &.hidden {
+        display: none;
+    }
+}
+.global-wrapper {
+    overflow: hidden;
+    @include b.breakpointUi(md) {
+        overflow: hidden;
+    }
+}

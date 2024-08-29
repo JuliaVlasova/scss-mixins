@@ -1,0 +1,15 @@
+$grayFolder: 'gray';
+
+$images--default: (
+  reversed-g2: '/images/common-theme/components/reviews/reversed-g2',
+  tr: '/images/common-theme/components/reviews/tr',
+  captera: '/images/common-theme/components/reviews/captera',
+  product-hunt: '/images/common-theme/components/reviews/product-hunt',
+);
+
+$images--gray: (
+  reversed-g2: '/images/common-theme/components/reviews/#{$grayFolder}/reversed-g2',
+  tr: '/images/common-theme/components/reviews/#{$grayFolder}/tr',
+  captera: '/images/common-theme/components/reviews/#{$grayFolder}/captera',
+  product-hunt: '/images/common-theme/components/reviews/#{$grayFolder}/product-hunt',
+);

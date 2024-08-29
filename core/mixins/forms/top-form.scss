@@ -1,0 +1,131 @@
+@use '../../mixins/breakpoint' as *;
+@use '../../mixins/button' as *;
+@use '../../mixins/forms/text-input' as *;
+@use '../../mixins/text' as *;
+
+/// example @include top-form(548px, 400px, 'coloredButtonBlue', 'blueInline', 'lg', false);
+
+@mixin top-form(
+	$block-width: 548px,
+	$input-width: 340px,
+	$button: 'simpleInline',
+	$buttonSize: 'bg',
+	$horizontal: true
+) {
+	--z-index: 50;
+	--position: relative;
+	--margin-bottom: 20px;
+	margin-bottom: 5px;
+	max-width: $block-width;
+	width: 100%;
+	z-index: var(--z-index);
+	position: var(--position);
+
+	@include breakpointUi(md) {
+		max-width: 320px;
+		margin-bottom: var(--margin-bottom);
+	}
+
+	@include breakpointUi(lt-md) {
+		max-width: revert;
+		width: 100%;
+		margin: 0 auto var(--margin-bottom);
+	}
+
+	.index-form {
+		display: flex;
+
+		@if $horizontal == true {
+			flex-direction: row;
+		} @else {
+			flex-direction: column;
+		}
+
+		@include breakpointUi(lt-lg) {
+			flex-direction: column;
+		}
+	}
+
+	.form_button {
+		@if ($button == 'simpleInline') {
+			@include button($buttonSize);
+
+			@include breakpointUi(lt-lg) {
+				@include button('md');
+			}
+		}
+		@if $horizontal == true {
+			@include breakpointUi(gt-md) {
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+		} @else {
+			border-radius: 5px;
+		}
+	}
+
+	.form-group_styled {
+		width: 100%;
+		max-width: $input-width;
+
+		@include breakpointUi(lt-lg) {
+			margin-bottom: 0;
+		}
+
+		@include breakpointUi(lt-md) {
+			max-width: revert;
+		}
+
+		input {
+			@include textInput($buttonSize);
+
+			@include breakpointUi(lt-lg) {
+				@include textInput('md'); // Всегда будет стоять размер md для Safari
+			}
+
+			@if $horizontal == true {
+				@include breakpointUi(gt-md) {
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;
+				}
+			} @else {
+				border-radius: 5px;
+			}
+		}
+
+		.error {
+			min-height: 20px;
+			height: auto;
+			margin-top: 5px;
+			display: block !important;
+
+			@include breakpointUi(lt-md) {
+				margin-top: 0;
+			}
+		}
+
+		&.has-error {
+			input {
+				@include textInput($buttonSize, 'error');
+
+				@include breakpointUi(lt-lg) {
+					@include textInput('md', 'error');
+				}
+
+				@if $horizontal == true {
+					@include breakpointUi(gt-md) {
+						border-top-right-radius: 0;
+						border-bottom-right-radius: 0;
+					}
+				} @else {
+					border-radius: 5px;
+				}
+			}
+
+			.help-block {
+				display: block;
+				@include text('error', 'sm');
+			}
+		}
+	}
+}

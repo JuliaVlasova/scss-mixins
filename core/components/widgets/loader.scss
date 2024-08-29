@@ -1,0 +1,85 @@
+@use '../../variables/colors' as *;
+@use '../../mixins/mixins' as *;
+
+@keyframes fades {
+	0%,
+	100% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes fades {
+	0%,
+	100% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+}
+
+.p-loader {
+	z-index: 10;
+	background: map-get($colors, 'white');
+	width: 100%;
+	height: 100%;
+	padding-top: 150px;
+	padding-bottom: 150px;
+	display: none;
+
+	@include breakpointUi(lt-md) {
+		padding-top: 100px;
+		padding-bottom: 127px;
+	}
+
+	&__container {
+		min-height: 73px;
+		padding: 15px 20px;
+		text-align: center;
+		position: relative;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, 0);
+		@include text('main', 'xs');
+	}
+
+	&__inner {
+		display: flex;
+		gap: 5px;
+		justify-content: center;
+		margin-bottom: 20px;
+	}
+
+	&__circle {
+		width: 14px;
+		height: 14px;
+		border-radius: 100%;
+		animation-duration: 1.5s;
+		-webkit-animation-duration: 1.5s;
+		animation-name: fades;
+		-webkit-animation-name: fades;
+		animation-iteration-count: infinite;
+		-webkit-animation-iteration-count: infinite;
+
+		&_blue {
+			background: #2585d8;
+		}
+
+		&_red {
+			background: #fe4100;
+			animation-delay: 0.2s;
+			-webkit-animation-delay: 0.2s;
+		}
+
+		&_orange {
+			background: #fe8900;
+			animation-delay: 0.4s;
+			-webkit-animation-delay: 0.4s;
+		}
+	}
+}

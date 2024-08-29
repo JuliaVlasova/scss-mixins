@@ -1,0 +1,46 @@
+/// scrollbar mixin.
+///
+/// @author Roman Morozov
+/// needs to be improved, not used!!!
+
+@mixin scrollbar($width, $height, $border-color, $background-color, $border-radius, $border-color-thumb) {
+  &::-webkit-scrollbar {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inherit;
+    width: $width;
+    height: $height;
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+    border-radius: $border-radius;
+
+    @supports (-webkit-touch-callout: none) {
+      opacity: 0;
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $border-radius;
+    background-color: $background-color;
+    border: 2px solid $border-color-thumb;
+
+    @supports (-webkit-touch-callout: none) {
+      appearance: none;
+      -webkit-appearance: none;
+      opacity: 0;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-radius: $border-radius;
+    background: $border-color;
+
+    @supports (-webkit-touch-callout: none) {
+      appearance: none;
+      -webkit-appearance: none;
+      opacity: 0;
+    }
+  }
+}

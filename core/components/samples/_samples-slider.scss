@@ -1,0 +1,248 @@
+$color-secondary: #495365;
+$color-main: #1F2530;
+
+@mixin button-color($background, $color, $background-hover) {
+    background: $background;
+    color: $color;
+
+    &:hover {
+        @media screen and (min-width: 600px) {
+            background: $background-hover;
+            color: $color;
+        }
+    }
+}
+
+@mixin scrollbar($width, $height, $border-color, $background-color, $border-radius, $border-color-thumb) {
+    &::-webkit-scrollbar {
+        width: $width;
+        height: $height;
+        border-bottom: 1px solid $border-color;
+        border-top: 1px solid $border-color;
+        border-radius: $border-radius;
+    }
+        
+    &::-webkit-scrollbar-thumb {
+        border-radius: $border-radius;
+        background-color: $background-color;
+        border: 2px solid $border-color-thumb;
+    }
+        
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+        border-radius: $border-radius;
+    }
+}
+
+.samples {
+    display: flex;
+
+    @media screen and (max-width: 1230px) {
+        display: block;
+    }
+
+    @media screen and (max-width: 959px) {
+        background: none;
+        border: none;
+        margin-bottom: 50px;
+    }
+
+    &.separate-section {
+        padding: 0;
+    }
+
+    &__section {
+        padding: 0 60px 0 100px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media screen and (max-width: 1230px) and (min-width: 960px) {
+            padding: 60px 60px 0 60px;
+        }
+
+        @media screen and (max-width: 959px) {
+            padding: 0 20px 20px;
+        }
+    }
+
+    &__slider {
+        background: rgba(225, 241, 255, 0.5);
+        padding: 38px 20px 30px;
+        width: 380px;
+        text-align: center;
+
+        @media screen and (max-width: 1230px) {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media screen and (max-width: 599px) {
+            width: 100%;
+            height: 480px;
+            background: none;
+            padding: 0;
+        }
+
+        .slider-dotted__nav {
+            @media screen and (max-width: 599px) {
+                margin-top: -40px;
+            }
+        }
+    }
+
+    &__slide {
+        @media screen and (max-width: 599px) {
+            border-radius: 10px;
+            margin-right: 20px;
+            padding: 30px 20px 30px;
+        }
+
+        &:last-child {
+            @media screen and (max-width: 599px) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &__h3 {
+        font-weight: 900;
+        font-size: 45px;
+        line-height: 1.4;
+        letter-spacing: -0.03em;
+        color: $color-main;
+        margin: 0 0 28px;
+
+        @media screen and (max-width: 599px) {
+            font-size: 32px;
+            line-height: 1.3;
+            margin: 0 0 30px;
+        }
+    }
+
+    &__descr {
+        font-size: 16px;
+        line-height: 1.5;
+        color: $color-secondary;
+        margin-bottom: 32px;
+    }
+
+    &__text {
+        color: #9BA5B2;
+        font-size: 16px;
+        line-height: 19px;
+        margin-bottom: 10px;
+    }
+
+    &__title {
+        color: $color-main;
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 30px;
+        margin-bottom: 20px;
+
+        @media screen and (max-width: 599px) {
+            font-size: 24px;
+        }
+
+        &_sm {
+            font-size: 20px;
+
+            @media screen and (max-width: 599px) {
+                font-size: 17px;
+            }
+        }
+    }
+
+    &__image {
+        padding: 8px 0;
+        background: #fff;
+        box-shadow: 0px 10px 25px rgba(7, 0, 47, 0.05);
+        border-radius: 3px;
+        width: 200px;
+        height: 210px;
+        margin: 0 auto 16px;
+    }
+
+    &__button {
+        width: 180px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: 16px;
+        text-align: center;
+        display: block;
+        margin: 0 auto 37px;
+        cursor: pointer;
+        @include button-color(#008DEF, #FFFFFF, #3EB0FF);
+    }
+}
+
+.block-hidden {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 900;
+    background: rgba(31, 37, 48, .9);
+    display: none;
+
+    &_opened {
+        display: block;
+    }
+
+    &__scroll {
+        height: 73vh;
+        overflow: hidden;
+        overflow-y: auto;
+        @include scrollbar(15px, 15px, #eee, #C3C3C3, 8px, #C3C3C3);
+    }
+
+    &__container {
+        max-width: 980px;
+        width: 100%;
+        margin: 20vh auto 0;
+
+        @media screen and (max-width: 959px) {
+            width: 90%;
+        }
+    }
+
+    &__title {
+        margin-bottom: 22px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.3;
+        text-align: right;
+    }
+
+    &__image {
+        @media screen and (max-width: 959px) {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__close {
+        position: fixed;
+        top: 70px;
+        right: 70px;
+        cursor: pointer;
+
+        @media screen and (max-width: 959px) {
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+
+
+
+
+

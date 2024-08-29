@@ -1,0 +1,38 @@
+@use "../../variables/colors" as *;
+@use "../../mixins/breakpoint" as *;
+@use "../button" as *;
+
+@mixin bottom-form(
+    $background: map-get($colors, "header-dark"),
+    $button-style: "button-orange",
+    $border-line: false
+) {
+    .main__form {
+        background: $background;
+    }
+
+    .bottom-form {
+        h2 {
+            margin: 0;
+
+            span {
+                display: block;
+            }
+        }
+        .form_button {
+            @if ($border-line == true) {
+                @include button("bg", $button-style, $border-line: true);
+
+                @include breakpointUi(lt-md) {
+                    @include button("md", $button-style, $border-line: true);
+                }
+            } @else {
+                @include button("bg", $button-style, $border-line);
+
+                @include breakpointUi(lt-md) {
+                    @include button("md", $button-style, $border-line);
+                }
+            }
+        }
+    }
+}

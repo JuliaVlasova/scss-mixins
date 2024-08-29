@@ -1,0 +1,112 @@
+@use '../variables/colors' as *;
+@use 'breakpoint' as *;
+@use 'forms/top-form' as *;
+@use 'text' as *;
+
+// @include default-popup('gray-80', 10px, 340px, 30px, 30px, 'md');
+
+@mixin default-popup(
+	$overlay-background: 'blue-80',
+	$popup-border-radius: 15px, 
+	$popup-width: 400px,
+	$popup-window-padding: 40px,
+	$logo-size: 40px,
+	$title: 'xl',
+) {
+	.popup-opener {
+		cursor: pointer;
+	}
+	
+	.popup-overlay {
+		background: map-get($colors, $overlay-background);
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 220;
+		display: none;
+		overflow: hidden;
+		overflow-y: auto;
+
+		@if ($overlay-background == 'blue-80') {
+			backdrop-filter: blur(7.75px);
+		} @else if ($overlay-background == 'gray-80') {
+			backdrop-filter: blur(5px);
+		}
+	}
+	
+	.popup-window {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 230;
+		overflow: hidden;
+		border-radius: $popup-border-radius;
+		display: none;
+		background: map-get($colors, 'white');
+		padding: $popup-window-padding;
+	
+		@include breakpointUi(gt-sm) {
+			width: $popup-width;
+		}
+	
+		@include breakpointUi(lt-md) {
+			width: 90%;
+		}
+	
+		&__close {
+			--size: 15px;
+			--indent: 20px;
+			width: var(--size);
+			height: var(--size);
+			cursor: pointer;
+			position: absolute;
+			top: var(--indent);
+			right: var(--indent);
+			z-index: 10;
+		}
+	}
+
+	.popup-form__logo,
+	.popup-window__logo {
+		width: $logo-size;
+		height: $logo-size;
+		margin: 0 auto 15px;
+		display: block;
+	}
+	
+	.popup-form__title,
+	.popup-window__title {
+		@include text('main', $title); 
+		letter-spacing: -0.24px;
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	
+	.popup-form {
+		&__form {
+			@include top-form($buttonSize: 'md', $horizontal: false);
+			margin: 0;
+	
+			.form-group_styled {
+				input {
+					border: 1px solid map-get($colors, 'black-18');
+					padding: 10px;
+				}
+	
+				&.has-error {
+					input {
+						padding: 10px;
+					}
+				}
+	
+				.error {
+					margin-top: 2px;
+				}
+			}
+		}
+	}
+}
+

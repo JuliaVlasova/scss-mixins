@@ -1,0 +1,123 @@
+$colors: (
+	// Background
+	'white': #ffffff,
+	'header-dark': #071b41,
+	'solid-dark': #06122f,
+	'blog-header': #132a50,
+	'gray-light': #f8fbff,
+	'blue-light': #f0f6ff,
+	'blue2-light': #a1ceff,
+	'light2-bg': #dff0ff,
+	'breadcrumbs': #efefef,
+	'tabs-back': #19244f,
+	'transparent': transparent,
+
+	// Text colors
+	'main': #1f2530,
+	'secondary-dark': #495365,
+	'secondary-2': #A1CEFF,
+	'main-light': #ffffff,
+	'secondary-light': #90b1d6,
+	'very-pink': #eb2878,
+	'viola': #9a32ca,
+
+	// Menu colors
+	'menu-light': #788cb6,
+
+	// Brand colors
+	'rt-tool': #fc4304,
+	'wa-tool': #ff8800,
+	'sg-tool': #6dbc00,
+	'la-tool': #2c86d5,
+
+	// Footer icon color
+	'default-icon': #869aab,
+	'footer-item-text': #6a869e,
+	'footer-item-title': #b4c0d9,
+
+	// State color
+	'success': #0e8c23,
+	'error': #fd3540,
+	'link': #0077cc,
+	'link-visited': #734ba6,
+
+	// Separator colors
+	'sep-rt': #47b8ff,
+	'sep-wa': #ffbd72,
+	'sep-sg': #64a531,
+	'sep-la': #f9d75c,
+	'sep-bing': #02bab5,
+	'sep-rt2': #ff7d66,
+
+	// SPS colors
+	'sps-yellow': #ffb800,
+	'sps-green': #64a531,
+	'sps-orange': #fe7e36,
+
+	// Buttons Color GRADIENT backgrounds
+	'button-orange': linear-gradient(273.18deg, #ff4a72 0.5%, #ff7772 51.28%, #ffb35b 100%),
+	'button-blue': linear-gradient(94deg, #5fcfff -16.53%, #0073de 99.97%),
+	'button-red': linear-gradient(94.38deg, #ff8f6b 0.56%, #ff2158 97.75%),
+	'button-pink': linear-gradient(96.54deg, #ff63e1 -0.1%, #fd266e 103.6%),
+	'button-green': linear-gradient(96.54deg, #83cf19 -0.1%, #6dbc00 103.6%),
+	// Gradients LIGHT backgrounds
+	'g-light-white': linear-gradient(180deg, #ffffff 0%, #f1fbff 100%),
+	'g-gray': linear-gradient(180deg, #ffffff 0%, #ddefff 156.25%),
+	'g-blue-light': linear-gradient(97.34deg, #f8fbff 0%, #e7f1fe 100%),
+	'g-gray-light': linear-gradient(310.05deg, #eaeaea 19.82%, #ffffff 65.16%),
+	'g-blue-pink': linear-gradient(77.23deg, #b2e9ff 1.82%, #e3f7ff 23.98%, #ffdffc 96.39%),
+	'g-blue-pink-rotate': linear-gradient(-77.23deg, #b2e9ff 1.82%, #e3f7ff 23.98%, #ffdffc 96.39%),
+	'g-light-white2': linear-gradient(180deg, #fff 0%, #fff 0.01%, #ebf9ff 100%),
+	'slider': linear-gradient(180deg, #FFF 0%, #FFF 0.01%, #F8FAFD 100%),
+	// Black opacity
+	'black-3': rgba(20, 37, 69, 0.03),
+	'black-6': rgba(20, 37, 69, 0.06),
+	'black-12': rgba(20, 37, 69, 0.12),
+	'black-18': rgba(20, 37, 69, 0.18),
+	'black-24': rgba(20, 37, 69, 0.24),
+	'black-36': rgba(20, 37, 69, 0.36),
+	'black-48': rgba(20, 37, 69, 0.48),
+	'black-60': rgba(20, 37, 69, 0.6),    
+	// White opacity
+	'white-3': rgba(144, 177, 214, 0.03),
+	'white-6': rgba(144, 177, 214, 0.06),
+	'white-12': rgba(144, 177, 214, 0.12),
+	'white-18': rgba(144, 177, 214, 0.18),
+	'white-24': rgba(144, 177, 214, 0.24),
+	'white-36': rgba(144, 177, 214, 0.36),
+	'white-48': rgba(144, 177, 214, 0.48),
+	'white-60': rgba(144, 177, 214, 0.6),
+	// Overlay backgrounds
+	'blue-80': rgba(0, 18, 51, 0.8),
+	'gray-80': rgba(31, 37, 48, 0.8)
+);
+
+// Buttons Color GRADIENT backgrounds
+$button-orange: (
+	'1': #ff4a72,
+	'2': #ff7772,
+	'3': #ffb35b,
+);
+$button-blue: (
+	'1': #5fcfff,
+	'2': #0073de,
+);
+$button-red: (
+	'1': #ff8f6b,
+	'2': #ff2158,
+);
+$button-pink: (
+	'1': #ff63e1,
+	'2': #fd266e,
+);
+$button-green: (
+	'1': #83cf19,
+	'2': #6dbc00,
+);
+$button-violet: (
+	'1': #dc509c,
+	'2': #bd4ddc,
+	'3': #a453f5,
+	'4': #806df9,
+	'5': #677ffc,
+);

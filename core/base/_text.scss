@@ -1,0 +1,22 @@
+@use "../variables/text" as *;
+@use "../variables/colors" as *;
+
+body {
+  color: map-get($colors, 'main');
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}

@@ -1,0 +1,291 @@
+@use "sass:map";
+@use "../../abstracts/.env" as *;
+@use "../../variables/colors" as *;
+@use "../../variables/components/reviews";
+@use "../../mixins/breakpoint" as *;
+@use "../../mixins/text" as *;
+
+
+// Here we connect our logos
+// # Declaration reviews.$variable-name
+// example @include source-map(reviews.$images-default);
+
+@mixin source-map($array) {
+  @each $item, $value in $array {
+    @if not map-has-key($array, $item) {
+      @warn "'#{$item}' is not a valid file name";
+    }
+    @else {
+      &--#{$item} {
+        background: url('#{$cdn}#{$value}.svg') no-repeat;
+        background-size: cover;
+        @media(-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+          background: url('#{$cdn}#{$value}@2x.svg') no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+  }
+}
+
+// example .reviews { &_default {@include reviews();} }
+// example .reviews { &_gray {@include reviews('gray');} }
+
+@mixin reviews(
+  $style: 'default',
+  $logoSize: 60px,
+  $logoMobile: 45px,
+)
+
+{
+  --max-width: 980px;
+  --star-size: 15px;
+  --logo-size: #{$logoSize};
+  --logo-size-mobile: #{$logoMobile};
+  --grid-size: 4;
+  --row-gap: 30px;
+  --column-gap: 35px;
+  --reviews-item-gap: 15px;
+  --max-w-tablet: 700px;
+  --max-w-mobile: 350px;
+  --flex-position: unset;
+  max-width: var(--max-width);
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), 1fr);
+  row-gap: var(--row-gap);
+  column-gap: var(--column-gap);
+  align-items: var(--flex-position);
+  margin: 0 auto;
+  position: relative;
+  z-index: 50;
+  content-visibility: auto;
+  @include breakpointUi(md) {
+    --column-gap: 20px;
+    justify-items: center;
+	--star-size: 11px;
+	max-width: var(--max-w-tablet);
+  }
+  @include breakpointUi(lt-md) {
+    --grid-size: 2;
+    --flex-position: end;
+    --star-size: 11px;
+    justify-content: center;
+    max-width: var(--max-w-mobile);
+    margin: 0 auto;
+  }
+  @include breakpointUi(xs) {
+    --column-gap: 25px;
+    --reviews-item-gap: 11px;
+  }
+
+  @if ($style == 'default') {
+    .reviews__item {
+      display: flex;
+      align-items: center;
+      gap: var(--reviews-item-gap);
+      .image {
+        --scope-image-size: var(--logo-size);
+        width: var(--scope-image-size);
+        height: var(--scope-image-size);
+        @include breakpointUi(lt-lg) {
+          --scope-image-size: var(--logo-size-mobile);
+        }
+        @include source-map(reviews.$images--default);
+      }
+      .content {
+        .head {
+          display: flex;
+          gap: .7px;
+          margin-bottom: 10px;
+          @include breakpointUi(lt-lg) {
+            margin-bottom: 8px;
+          }
+          &.text-head {
+            @include breakpointUi(lt-md) {
+              flex-direction: column;
+              margin-bottom: 5px;
+            }
+          }
+          .icon {
+            width: var(--star-size);
+            height: var(--star-size);
+          }
+          .proof__item {
+            position: relative;
+            @include text('secondary-dark', 'xs');
+            margin-left: 10px;
+            margin-right: 10px;
+            white-space: nowrap;
+            @include breakpointUi(lt-lg) {
+              @include text('secondary-dark', 'xxs');
+              margin-right: 0;
+            }
+            &:before {
+              content: "";
+              position: absolute;
+              left: -10px;
+              top: 50%;
+              width: 5px;
+              height: 5px;
+              border-radius: 100px;
+              background: #e64a19;
+              transform: translateY(-50%);
+            }
+          }
+        }
+        .link {
+          @include text('link', 'sm');
+          text-decoration: underline;
+          transition: 200ms;
+          @include breakpointUi(lt-lg) {
+            @include text('link', 'xs');
+          }
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+      &:nth-child(1) {
+        .icon {
+          $color: #F65E46;
+          --ui-color: #{$color};
+        }
+      }
+      &:nth-child(2) {
+        .icon {
+          $color: #2CB5B4;
+          --ui-color: #{$color};
+        }
+        @include breakpointUi(md) {
+          justify-self: baseline;
+        }
+      }
+      &:nth-child(3) {
+        .icon {
+          $color: #FF9D28;
+          --ui-color: #{$color};
+        }
+        .content {
+          @include breakpointUi(lt-md) {
+            align-self: end;
+          }
+        }
+      }
+      &:nth-child(4) {
+        @include breakpointUi(md) {
+          justify-self: baseline;
+        }
+      }
+    }
+  }
+
+  @if ($style == 'gray') {
+    $svg-color: map-get($colors, 'white-60');
+    $link: $svg-color;
+    @include breakpointUi(lt-md) {
+      --grid-size: 2;
+      --max-w-mobile: 350px;
+    }
+    .reviews__item {
+      display: flex;
+      align-items: center;
+      gap: var(--reviews-item-gap);
+      .image {
+        --scope-image-size: var(--logo-size);
+        width: var(--scope-image-size);
+        height: var(--scope-image-size);
+        @include breakpointUi(lt-lg) {
+          --scope-image-size: var(--logo-size-mobile);
+        }
+        @include source-map(reviews.$images--gray);
+      }
+      .content {
+        .head {
+          display: flex;
+          gap: .7px;
+          margin-bottom: 10px;
+          @include breakpointUi(lt-lg) {
+            margin-bottom: 8px;
+          }
+          &.text-head {
+            @include breakpointUi(lt-md) {
+              flex-direction: column;
+              margin-bottom: 5px;
+            }
+          }
+          .icon {
+            width: var(--star-size);
+            height: var(--star-size);
+          }
+          .proof__item {
+            position: relative;
+            @include text($svg-color, 'xs');
+            color: $svg-color;
+            margin-left: 10px;
+            margin-right: 10px;
+            white-space: nowrap;
+            &:before {
+              content: "";
+              position: absolute;
+              left: -10px;
+              top: 50%;
+              width: 5px;
+              height: 5px;
+              border-radius: 100px;
+              background: $svg-color;
+              transform: translateY(-50%);
+            }
+          }
+        }
+        .link {
+          @include text('link', 'sm');
+          color: $link;
+          text-decoration: underline;
+          transition: 200ms;
+          @include breakpointUi(lt-lg) {
+            @include text('link', 'xs');
+            color: $link;
+          }
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+      &:nth-child(1) {
+        .icon {
+          $color: $svg-color;
+          --ui-color: #{$color};
+        }
+      }
+      &:nth-child(2) {
+        .icon {
+          $color: $svg-color;
+          --ui-color: #{$color};
+        }
+        @include breakpointUi(md) {
+          justify-self: baseline;
+        }
+      }
+      &:nth-child(3) {
+        .icon {
+          $color: $svg-color;
+          --ui-color: #{$color};
+        }
+        .content {
+          @include breakpointUi(lt-md) {
+            align-self: end;
+          }
+        }
+      }
+      &:nth-child(4) {
+        @include breakpointUi(md) {
+          justify-self: baseline;
+        }
+      }
+    }
+  }
+}
+
+
+

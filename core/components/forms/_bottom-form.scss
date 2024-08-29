@@ -1,0 +1,202 @@
+@use '../../mixins/mixins' as *;
+@use '../../variables/colors' as *;
+@use '../../mixins/breakpoint' as *;
+
+.main__form {
+	@include ui-border();
+	position: relative;
+	padding: 80px 50px;
+	overflow: hidden;
+
+	@include breakpointUi(lt-md) {
+		padding: 60px 20px;
+	}
+
+	.ellipse {
+		$size: 700px;
+		top: unset;
+		position: absolute;
+		background: -moz-radial-gradient(center, ellipse cover, #59a8f1 0%, rgba(229, 229, 229, 0) 70%);
+		background: -webkit-radial-gradient(center, ellipse cover, #59a8f1 0%, rgba(229, 229, 229, 0) 70%);
+		background: radial-gradient(ellipse at center, #59a8f1 0%, rgba(229, 229, 229, 0) 70%);
+		opacity: 0.4;
+		z-index: 1;
+
+		&.el_left {
+			width: $size;
+			height: $size;
+			top: 0;
+			left: -50%;
+			transform: translate(50%, -50%);
+
+			@include breakpointUi(md) {
+				transform: translate(0, -50%);
+			}
+
+			@include breakpointUi(lt-md) {
+				width: 500px;
+				height: 500px;
+				top: unset;
+				bottom: -40%;
+				left: -40%;
+				transform: none;
+			}
+		}
+
+		&.el_right {
+			width: $size;
+			height: $size;
+			bottom: 0;
+			right: -50%;
+			transform: translate(-50%, 50%);
+
+			@include breakpointUi(md) {
+				transform: translate(0, 50%);
+			}
+
+			@include breakpointUi(lt-md) {
+				width: 500px;
+				height: 500px;
+				bottom: unset;
+				right: -40%;
+				top: -40%;
+				transform: none;
+			}
+		}
+	}
+
+	&-container {
+		margin: 0 auto;
+
+		* {
+			z-index: 50;
+			position: relative;
+		}
+
+		.title {
+			@include heading('2');
+			color: map-get($colors, 'white');
+			text-align: center;
+			margin: 0 auto 10px;
+
+			@include breakpointUi(lt-md) {
+				@include heading('3');
+				margin-bottom: 10px;
+				text-align: left;
+			}
+		}
+
+		.sub {
+			@include text('white', 'xxl');
+			text-align: center;
+			margin: 0 auto 30px;
+
+			@include breakpointUi(md) {
+				@include text('white', 'xxxl');
+			}
+
+			@include breakpointUi(lt-md) {
+				@include text('white', 'lg');
+				text-align: left;
+				max-width: revert;
+			}
+		}
+		.description {
+			@include text('secondary-light', 'bg');
+			text-align: center;
+			margin-bottom: 40px;
+			@include breakpointUi(lt-md) {
+				@include text('secondary-light', 'sm');
+				text-align: left;
+			}
+		}
+		.form__items {
+			margin: 0 auto 10px;
+
+			@include breakpointUi(lt-md) {
+				margin: 0 auto 20px;
+			}
+
+			.index-form {
+				display: flex;
+				justify-content: center;
+
+				@include breakpointUi(lt-md) {
+					flex-direction: column;
+				}
+			}
+
+			.form_button {
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+
+				@include breakpointUi(lt-md) {
+					border-radius: 5px;
+				}
+			}
+
+			.form-group_styled {
+				width: 100%;
+				max-width: 320px;
+
+				@include breakpointUi(lt-md) {
+					max-width: revert;
+					margin-bottom: 0;
+				}
+
+				input {
+					@include textInput('bg');
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;
+
+					@include breakpointUi(lt-md) {
+						@include textInput('md');
+					}
+				}
+
+				div[data-ng-show="errors['downloadform-email']"] {
+					min-height: 20px;
+					height: auto;
+					display: block !important;
+					text-align: left;
+				}
+
+				.div {
+					min-height: 10px;
+					height: auto;
+					margin-top: 5px;
+					display: block !important;
+
+					@include breakpointUi(lt-md) {
+						min-height: 10px;
+						margin-top: 0;
+						margin-bottom: 10px;
+					}
+				}
+
+				&.has-error {
+					input {
+						@include textInput('bg', 'error');
+						border-top-right-radius: 0;
+						border-bottom-right-radius: 0;
+
+						@include breakpointUi(lt-md) {
+							@include textInput('md', 'error');
+						}
+					}
+
+					.help-block {
+						display: block;
+						@include text('error', 'sm');
+					}
+				}
+			}
+		}
+	}
+
+	.application-sub {
+		align-items: center;
+		justify-content: center;
+		display: flex;
+	}
+}

@@ -1,0 +1,36 @@
+@use "../variables/ui-border" as border;
+@use "breakpoint" as *;
+
+@mixin ui-border(
+  $size: 'md',
+)
+{
+  @if $size == 'sm' {
+    $border-radius: map-get(border.$ui--border-sm, $size);
+    border-radius: $border-radius;
+    @include breakpointUi(md) {
+      $border-radius: map-get(border.$ui--border-sm, $size);
+      border-radius: $border-radius;
+    }
+    @include breakpointUi(lt-md) {
+      $border-radius: map-get(border.$ui--border-xs, $size);
+      border-radius: $border-radius;
+    }
+  } @else {
+    $border-radius: map-get(border.$ui--border, $size);
+    border-radius: $border-radius;
+
+    @include breakpointUi(md) {
+      $border-radius: map-get(border.$ui--border-sm, $size);
+      border-radius: $border-radius;
+    }
+    @include breakpointUi(lt-md) {
+      $border-radius: map-get(border.$ui--border-xs, $size);
+      border-radius: $border-radius;
+    }
+}
+
+
+}
+
+

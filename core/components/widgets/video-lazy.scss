@@ -1,0 +1,50 @@
+@use '../../mixins/text' as *;
+@use '../../variables/colors' as *;
+@use '../../mixins/breakpoint' as *;
+
+.lp-video-wrapper {
+	&__inner {
+		position: relative;
+		z-index: 10;
+	}
+}
+
+.lp-video-block {
+	position: relative;
+	cursor: pointer;
+	width: 100%;
+	border-radius: 15px;
+	overflow: hidden;
+	margin: 0 auto;
+	box-shadow: 0 67px 33px -47px rgba(0, 0, 0, 0.4);
+	content-visibility: auto;
+
+	.lazyframe {
+		max-width: revert;
+		&::after {
+			display: none;
+		}
+
+		&__title {
+			display: none;
+		}
+	}
+
+	@include breakpointUi(md) {
+		width: 100%;
+		border: none;
+		border-radius: 10px;
+	}
+
+	@include breakpointUi(lt-md) {
+		width: revert;
+		height: revert;
+		border-radius: 6px;
+		margin: 40px auto 0;
+	}
+
+	iframe {
+		width: 100% !important;
+		height: 100% !important;
+	}
+}

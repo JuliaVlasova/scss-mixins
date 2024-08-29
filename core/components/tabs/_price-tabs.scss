@@ -1,0 +1,150 @@
+@use '../../variables/colors' as *;
+@use '../../mixins/mixins' as *;
+
+.hide {
+	display: none;
+}
+
+.tabs-top {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #edf0f2 100%);
+	position: relative;
+	z-index: 1;
+
+	&_notabs {
+		background: transparent;
+	}
+}
+
+.tabs-bottom {
+	background: #fff;
+	padding-top: 80px;
+	margin-top: -4px;
+	position: relative;
+	z-index: 220;
+
+	@include breakpointUi(md) {
+		padding-top: 60px;
+	}
+
+	@media screen and (max-width: 780px) {
+		padding-top: 50px;
+	}
+
+	&_notabs {
+		padding-top: 0;
+	}
+}
+
+.plan-tabs {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	font-weight: bold;
+
+	@include breakpointUi(md) {
+		max-width: 728px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&_hidden {
+		display: none;
+	}
+
+	&__block {
+		width: 236px;
+		height: 74px;
+		margin-right: 10px;
+		padding-top: 10px;
+		border: 1px solid map-get($colors, 'black-6');
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.7);
+		color: #787787;
+		cursor: pointer;
+		flex-direction: column;
+		display: flex;
+		align-items: center;
+		align-content: center;
+		box-shadow: inset 0px -4px 10px rgba(31, 37, 48, 0.05);
+
+		&_active {
+			box-shadow: none;
+			border: none;
+			background: #fff;
+			border-top: 4px solid rgba(map-get($colors, 'blog-header'), 0.8);
+			padding-top: 7px;
+			border-radius: 5px;
+
+			@media screen and (max-width: 780px) {
+				border-top: 3px solid rgba(map-get($colors, 'blog-header'), 0.8);
+				padding-top: 8px;
+			}
+
+			.plan-tabs__title {
+				color: map-get($colors, 'main');
+			}
+		}
+
+		&:last-child {
+			margin-right: 0;
+
+			@media screen and (max-width: 780px) {
+				margin-right: 0;
+			}
+		}
+
+		&_indent {
+			padding-top: 22px;
+
+			@media screen and (max-width: 780px) {
+				padding-top: 17px;
+			}
+
+			&.plan-tabs__block_active {
+				padding-top: 19px;
+
+				@media screen and (max-width: 780px) {
+					padding-top: 15px;
+				}
+			}
+		}
+
+		@media screen and (max-width: 780px) {
+			width: 104px;
+			height: 54px;
+			margin-right: 4px;
+		}
+	}
+
+	&__title {
+		@include text('black-48', 'lg', 'bold');
+		margin-bottom: 7px;
+		height: 24px;
+
+		@media screen and (max-width: 780px) {
+			font-size: 14px;
+			line-height: 1;
+			height: 14px;
+			margin-bottom: 5px;
+		}
+	}
+
+	&__save {
+		height: 10px;
+
+		&_pink {
+			@include text('very-pink', 'md', 'bold');
+			line-height: 1;
+		}
+
+		&_viola {
+			@include text('viola', 'md', 'bold');
+			line-height: 1;
+		}
+
+		@media screen and (max-width: 780px) {
+			font-size: 12px;
+		}
+	}
+}

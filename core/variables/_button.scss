@@ -1,0 +1,148 @@
+@use "colors" as c;
+@use "sass:color";
+
+/// Button border radius
+$button-border-radius: 5px;
+
+/// Buttons heights by size.
+$button--heights: (
+  'bg': 60px,
+  'md': 50px,
+  'sm': 40px,
+);
+
+/// Buttons horizontal paddings by size.
+$button-padding-x: (
+  'bg': 45px,
+  'md': 40px,
+  'sm': 35px,
+);
+$buttons--icons-gap: (
+  'bg': 8px,
+  'md': 8px,
+  'sm': 8px,
+);
+
+$button--backgrounds: (
+  'button-orange': linear-gradient(273.18deg, map-get(c.$button-orange, '1') 0.5%, map-get(c.$button-orange, '2') 51.28%, map-get(c.$button-orange, '3')  100%),
+  'button-blue': linear-gradient(94deg, map-get(c.$button-blue, '1') -16.53%, map-get(c.$button-blue, '2') 99.97%),
+  'button-red': linear-gradient(94.38deg, map-get(c.$button-red, '1') 0.56%, map-get(c.$button-red, '2') 97.75%),
+  'button-pink': linear-gradient(96.54deg, map-get(c.$button-pink, '1') -0.1%, map-get(c.$button-pink, '2') 103.6%),
+  'button-green': linear-gradient(96.54deg, map-get(c.$button-green, '1') -0.1%, map-get(c.$button-green, '2') 103.6%),
+  'button-violet': linear-gradient(88deg, 
+  map-get(c.$button-violet, '1') 1.34%, 
+  map-get(c.$button-violet, '2') 28.21%,
+  map-get(c.$button-violet, '3') 55.58%,
+  map-get(c.$button-violet, '4') 80.92%,
+  map-get(c.$button-violet, '5') 98.66%,
+  ),
+);
+
+$button--backgrounds-hover: (
+  'button-orange': linear-gradient(273.18deg, color.adjust(map-get(c.$button-orange, '1'), $lightness: 6%) 0.5%, color.adjust(map-get(c.$button-orange, '2'), $lightness: 6%) 51.28%, color.adjust(map-get(c.$button-orange, '3'), $lightness: 6%)  100%),
+  'button-blue': linear-gradient(94deg, color.adjust(map-get(c.$button-blue, '1'), $lightness: 6%) -16.53%, color.adjust(map-get(c.$button-blue, '2'), $lightness: 6%) 99.97%),
+  'button-red': linear-gradient(94.38deg, color.adjust(map-get(c.$button-red, '1'), $lightness: 6%) 0.56%, color.adjust(map-get(c.$button-red, '2'), $lightness: 6%) 97.75%),
+  'button-pink': linear-gradient(96.54deg, color.adjust(map-get(c.$button-pink, '1'), $lightness: 6%) -0.1%, color.adjust(map-get(c.$button-pink, '2'), $lightness: 6%) 103.6%),
+  'button-green': linear-gradient(96.54deg, color.adjust(map-get(c.$button-green, '1'), $lightness: 6%) -0.1%, color.adjust(map-get(c.$button-green, '2'), $lightness: 6%) 103.6%),
+  'button-violet': linear-gradient(88deg, 
+  color.adjust(map-get(c.$button-violet, '1'), $lightness: 6%) 1.34%, 
+  color.adjust(map-get(c.$button-violet, '2'), $lightness: 6%) 28.21%,
+  color.adjust(map-get(c.$button-violet, '3'), $lightness: 6%) 55.58%,
+  color.adjust(map-get(c.$button-violet, '4'), $lightness: 6%) 80.92%,
+  color.adjust(map-get(c.$button-violet, '5'), $lightness: 6%) 98.66%,
+  ),
+);
+
+$button--backgrounds-focus: (
+  'button-orange': linear-gradient(273.18deg, color.adjust(map-get(c.$button-orange, '1'), $lightness: -6%) 0.5%, color.adjust(map-get(c.$button-orange, '2'), $lightness: -6%) 51.28%, color.adjust(map-get(c.$button-orange, '3'), $lightness: -6%)  100%),
+  'button-blue': linear-gradient(94deg, color.adjust(map-get(c.$button-blue, '1'), $lightness: -6%) -16.53%, color.adjust(map-get(c.$button-blue, '2'), $lightness: -6%) 99.97%),
+  'button-red': linear-gradient(94.38deg, color.adjust(map-get(c.$button-red, '1'), $lightness: -6%) 0.56%, color.adjust(map-get(c.$button-red, '2'), $lightness: -6%) 97.75%),
+  'button-pink': linear-gradient(96.54deg, color.adjust(map-get(c.$button-pink, '1'), $lightness: -6%) -0.1%, color.adjust(map-get(c.$button-pink, '2'), $lightness: -6%) 103.6%),
+  'button-green': linear-gradient(96.54deg, color.adjust(map-get(c.$button-green, '1'), $lightness: -6%) -0.1%, color.adjust(map-get(c.$button-green, '2'), $lightness: -6%) 103.6%),
+  'button-violet': linear-gradient(88deg, 
+  color.adjust(map-get(c.$button-violet, '1'), $lightness: -6%) 1.34%, 
+  color.adjust(map-get(c.$button-violet, '2'), $lightness: -6%) 28.21%,
+  color.adjust(map-get(c.$button-violet, '3'), $lightness: -6%) 55.58%,
+  color.adjust(map-get(c.$button-violet, '4'), $lightness: -6%) 80.92%,
+  color.adjust(map-get(c.$button-violet, '5'), $lightness: -6%) 98.66%,
+  ),
+);
+
+$button--backgrounds-classic: (
+        rt-tool: map-get(c.$colors, 'rt-tool'),
+        wa-tool: map-get(c.$colors, 'wa-tool'),
+        sg-tool: map-get(c.$colors, 'sg-tool'),
+        la-tool: map-get(c.$colors, 'la-tool'),
+        sep-rt: map-get(c.$colors, 'sep-rt'),
+        sep-wa: map-get(c.$colors, 'sep-wa'),
+        sep-sg: map-get(c.$colors, 'sep-sg'),
+        sep-la: map-get(c.$colors, 'sep-la'),
+        sep-bing: map-get(c.$colors, 'sep-bing'),
+        sep-rt2: map-get(c.$colors, 'sep-rt2'),
+        black-3: map-get(c.$colors, 'black-3'),
+        black-6: map-get(c.$colors, 'black-6'),
+        black-12: map-get(c.$colors, 'black-12'),
+        black-18: map-get(c.$colors, 'black-18'),
+        black-24: map-get(c.$colors, 'black-24'),
+        black-36: map-get(c.$colors, 'black-36'),
+        black-48: map-get(c.$colors, 'black-48'),
+        black-60: map-get(c.$colors, 'black-60'),
+        blue-light: map-get(c.$colors, 'blue-light'),
+        gray-light: map-get(c.$colors, 'gray-light'),
+        light2-bg: map-get(c.$colors, 'light2-bg'),
+        white-12: map-get(c.$colors, 'white-12'),
+        dark: map-get(c.$colors, 'blog-header'),
+
+);
+$button--backgrounds-classic-hover: (
+        rt-tool: color.adjust(map-get(c.$colors, 'rt-tool'), $lightness: 6%),
+        wa-tool: color.adjust(map-get(c.$colors, 'wa-tool'), $lightness: 6%),
+        sg-tool: color.adjust(map-get(c.$colors, 'sg-tool'), $lightness: 6%),
+        la-tool: color.adjust(map-get(c.$colors, 'la-tool'), $lightness: 6%),
+        sep-rt: color.adjust(map-get(c.$colors, 'sep-rt'), $lightness: 6%),
+        sep-wa: color.adjust(map-get(c.$colors, 'sep-wa'), $lightness: 6%),
+        sep-sg: color.adjust(map-get(c.$colors, 'sep-sg'), $lightness: 6%),
+        sep-la: color.adjust(map-get(c.$colors, 'sep-la'), $lightness: 6%),
+        sep-bing: color.adjust(map-get(c.$colors, 'sep-bing'), $lightness: 6%),
+        sep-rt2: color.adjust(map-get(c.$colors, 'sep-rt2'), $lightness: 6%),
+        black-3: color.adjust(map-get(c.$colors, 'black-3'), $lightness: 6%),
+        black-6: color.adjust(map-get(c.$colors, 'black-6'), $lightness: 6%),
+        black-12: color.adjust(map-get(c.$colors, 'black-12'), $lightness: 6%),
+        black-18: color.adjust(map-get(c.$colors, 'black-18'), $lightness: 6%),
+        black-24: color.adjust(map-get(c.$colors, 'black-24'), $lightness: 6%),
+        black-36: color.adjust(map-get(c.$colors, 'black-36'), $lightness: 6%),
+        black-48: color.adjust(map-get(c.$colors, 'black-48'), $lightness: 6%),
+        black-60: color.adjust(map-get(c.$colors, 'black-60'), $lightness: 6%),
+        blue-light: color.adjust(map-get(c.$colors, 'blue-light'), $lightness: 6%),
+        gray-light: color.adjust(map-get(c.$colors, 'gray-light'), $lightness: 6%),
+        light2-bg: color.adjust(map-get(c.$colors, 'light2-bg'), $lightness: 6%),
+        white-12: color.adjust(map-get(c.$colors, 'white-12'), $lightness: 6%),
+        dark: color.adjust(map-get(c.$colors, 'blog-header'), $lightness: 6%),
+        blog-header: color.adjust(map-get(c.$colors, 'blog-header'), $lightness: 6%),
+);
+$button--backgrounds-classic-focus: (
+        rt-tool: color.adjust(map-get(c.$colors, 'rt-tool'), $lightness: -6%),
+        wa-tool: color.adjust(map-get(c.$colors, 'wa-tool'), $lightness: -6%),
+        sg-tool: color.adjust(map-get(c.$colors, 'sg-tool'), $lightness: -6%),
+        la-tool: color.adjust(map-get(c.$colors, 'la-tool'), $lightness: -6%),
+        sep-rt: color.adjust(map-get(c.$colors, 'sep-rt'), $lightness: -6%),
+        sep-wa: color.adjust(map-get(c.$colors, 'sep-wa'), $lightness: -6%),
+        sep-sg: color.adjust(map-get(c.$colors, 'sep-sg'), $lightness: -6%),
+        sep-la: color.adjust(map-get(c.$colors, 'sep-la'), $lightness: -6%),
+        sep-bing: color.adjust(map-get(c.$colors, 'sep-bing'), $lightness: -6%),
+        sep-rt2: color.adjust(map-get(c.$colors, 'sep-rt2'), $lightness: -6%),
+        black-3: color.adjust(map-get(c.$colors, 'black-3'), $lightness: -6%),
+        black-6: color.adjust(map-get(c.$colors, 'black-6'), $lightness: -6%),
+        black-12: color.adjust(map-get(c.$colors, 'black-12'), $lightness: -6%),
+        black-18: color.adjust(map-get(c.$colors, 'black-18'), $lightness: -6%),
+        black-24: color.adjust(map-get(c.$colors, 'black-24'), $lightness: -6%),
+        black-36: color.adjust(map-get(c.$colors, 'black-36'), $lightness: -6%),
+        black-48: color.adjust(map-get(c.$colors, 'black-48'), $lightness: -6%),
+        black-60: color.adjust(map-get(c.$colors, 'black-60'), $lightness: -6%),
+        blue-light: color.adjust(map-get(c.$colors, 'blue-light'), $lightness: -6%),
+        gray-light: color.adjust(map-get(c.$colors, 'gray-light'), $lightness: -6%),
+        light2-bg: color.adjust(map-get(c.$colors, 'light2-bg'), $lightness: -6%),
+        white-12: color.adjust(map-get(c.$colors, 'white-12'), $lightness: -6%),
+        dark: color.adjust(map-get(c.$colors, 'blog-header'), $lightness: -6%),
+        blog-header: color.adjust(map-get(c.$colors, 'blog-header'), $lightness: -6%),
+);

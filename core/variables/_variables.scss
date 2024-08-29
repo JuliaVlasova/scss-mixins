@@ -1,0 +1,20 @@
+@use "colors" as c;
+@use "text" as t;
+@forward "text";
+
+$content--padding-h-lg: 50px;
+$content--padding-h-md: 26px;
+$content--padding-h-sm: 20px;
+$content--padding-h-xs: 20px;
+$content--max-width: 1180px;
+
+// Colors
+$color--text--main: map-get(c.$colors, 'main');
+$color--body-bg: white;
+
+
+// Typography
+$base-font-family: 'Roboto', Arial, sans-serif;
+$base-font-size: map-get(t.$text--size, 'md');
+$base-line-height: 1.15;
+

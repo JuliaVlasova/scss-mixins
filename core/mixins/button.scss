@@ -1,0 +1,232 @@
+@use '../variables/button.scss' as b;
+@use '../variables/colors.scss' as c;
+@use 'text' as t;
+
+/// Buttons mixin.
+///
+/// @name Button
+/// @group UI Components
+/// @author Roman Morozov
+$test1: map-get(b.$button--backgrounds-hover, 'button-orange');
+@mixin button(
+	$size: 'bg',
+	$style: 'button-orange',
+	$type: 'text',
+	$mode: 'onLight',
+	$app: 'default',
+	$border-line: false,
+	$wide: false
+) {
+	$height: map-get(b.$button--heights, $size);
+	$width: auto;
+	$border-radius: b.$button-border-radius;
+	$padding-y: 0;
+	$border: none;
+	$background-color: map-get(c.$colors, $style);
+	$padding-x: map-get(b.$button-padding-x, $size);
+	$gap: normal;
+	@include t.text('white', $size, 'bold');
+
+	@if $style == 'button-orange' {
+		$background-color: map-get(b.$button--backgrounds, 'button-orange');
+	}
+	@if $style == 'button-blue' {
+		$background-color: map-get(b.$button--backgrounds, 'button-blue');
+	}
+	@if $style == 'button-red' {
+		$background-color: map-get(b.$button--backgrounds, 'button-red');
+	}
+	@if $style == 'button-pink' {
+		$background-color: map-get(b.$button--backgrounds, 'button-pink');
+	}
+	@if $style == 'button-green' {
+		$background-color: map-get(b.$button--backgrounds, 'button-green');
+	}
+	@if $style == 'button-violet' {
+		$background-color: map-get(b.$button--backgrounds, 'button-violet');
+	}
+
+	@if $style == 'flat' {
+	}
+
+	// $border-line: здесь
+	@if $border-line == true {
+		$border: solid 1px map-get(b.$button--backgrounds-classic, $style);
+		$background-color: transparent;
+		$padding-x: $padding-x - 1px;
+		color: map-get(c.$colors, 'main');
+	}
+
+	@if $wide == true {
+		$width: 100%;
+	}
+
+	@if $app == 'tools' {
+		$border: solid 1px map-get(b.$button--backgrounds-classic, 'black-18');
+		@include t.text('main', $size, 'bold');
+		$padding-x: 20px;
+		line-height: $height - 1px !important;
+	}
+
+	@if $type == 'toolsIconText' {
+		$gap: map-get(b.$buttons--icons-gap, $size);
+		$padding-x: map-get(b.$button-padding-x, $size) - $gap * 2;
+		$border: solid 1px map-get(b.$button--backgrounds-classic, $style);
+		line-height: $height - 1px !important;
+		.icon {
+			fill: map-get(c.$colors, 'white');
+		}
+	}
+
+	@if $type == 'clear' {
+		@include t.text('main', $size, 'bold');
+		$background-color: transparent;
+		$gap: map-get(b.$buttons--icons-gap, $size);
+		$padding-x: map-get(b.$button-padding-x, $size) - $gap * 2;
+		$border: solid 1px map-get(b.$button--backgrounds-classic, 'black-12');
+		line-height: $height - 1px !important;
+		.icon {
+			fill: map-get(c.$colors, 'sep-rt2');
+		}
+	}
+
+	@if $type == 'iconText' {
+		$gap: map-get(b.$buttons--icons-gap, $size);
+		$padding-x: map-get(b.$button-padding-x, $size) - $gap * 2;
+		line-height: $height - 1px !important;
+		.icon {
+			fill: map-get(c.$colors, 'white');
+		}
+		&[disabled] {
+			.icon {
+				fill: map-get(c.$colors, 'black-48');
+			}
+		}
+		//$gap: десь описать размеры иконок и отступы между текстом и иконкой
+	}
+
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: $gap;
+	box-sizing: border-box;
+	width: $width; // времено стоит !important т.к. нужно рефакторить header
+	height: $height;
+	padding: $padding-y $padding-x; // времено стоит !important т.к. нужно рефакторить header
+	border-radius: $border-radius; // времено стоит !important т.к. нужно рефакторить header;
+	border: $border; // времено стоит !important т.к. нужно рефакторить header
+	cursor: pointer;
+	background: $background-color;
+	transition: background-color 0.15s ease;
+
+	// Hover state
+	&:hover {
+		@if $style == 'button-orange' {
+			background: map-get(b.$button--backgrounds-hover, 'button-orange');
+		}
+		@if $style == 'button-blue' {
+			background: map-get(b.$button--backgrounds-hover, 'button-blue');
+		}
+		@if $style == 'button-red' {
+			background: map-get(b.$button--backgrounds-hover, 'button-red');
+		}
+		@if $style == 'button-pink' {
+			background: map-get(b.$button--backgrounds-hover, 'button-pink');
+		}
+		@if $style == 'button-green' {
+			background: map-get(b.$button--backgrounds-hover, 'button-green');
+		}
+		@if $style == 'button-violet' {
+			background: map-get(b.$button--backgrounds-hover, 'button-violet');
+		}
+		@if ($mode == 'onLight') {
+			background: map-get(b.$button--backgrounds-classic-hover, $style);
+		}
+		@if $border-line == true {
+			background: rgba(map-get(b.$button--backgrounds-classic, $style), 0.02);
+		}
+		@if ($app == 'tools') {
+			@include t.text('link', $size, 'bold');
+			background: map-get(b.$button--backgrounds-classic, 'blue-light');
+		}
+		@if ($type == 'toolsIconText') {
+			background: map-get(b.$button--backgrounds-classic-hover, $style);
+			border: solid 1px map-get(b.$button--backgrounds-classic-hover, $style);
+		}
+		@if ($type == 'clear') {
+			background: map-get(b.$button--backgrounds-classic, 'blue-light');
+		}
+	}
+
+	// Focus or active state
+	&:focus,
+	&:active {
+		@if $style == 'button-orange' {
+			background: map-get(b.$button--backgrounds-focus, 'button-orange');
+		}
+		@if $style == 'button-blue' {
+			background: map-get(b.$button--backgrounds-focus, 'button-blue');
+		}
+		@if $style == 'button-red' {
+			background: map-get(b.$button--backgrounds-focus, 'button-red');
+		}
+		@if $style == 'button-pink' {
+			background: map-get(b.$button--backgrounds-focus, 'button-pink');
+		}
+		@if $style == 'button-green' {
+			background: map-get(b.$button--backgrounds-focus, 'button-green');
+		}
+		@if $style == 'button-violet' {
+			background: map-get(b.$button--backgrounds-focus, 'button-violet');
+		}
+		@if ($mode == 'onLight') {
+			background: map-get(b.$button--backgrounds-classic-focus, $style);
+		}
+		@if $border-line == true {
+			background: rgba(map-get(b.$button--backgrounds-classic, $style), 0.06);
+		}
+		@if ($app == 'tools') {
+			@include t.text('link', $size, 'bold');
+			background: map-get(b.$button--backgrounds-classic, 'light2-bg');
+		}
+		@if ($type == 'toolsIconText') {
+			background: map-get(b.$button--backgrounds-classic-focus, $style);
+			border: solid 1px map-get(b.$button--backgrounds-classic-focus, $style);
+		}
+		@if ($type == 'clear') {
+			background: map-get(b.$button--backgrounds-classic, 'light2-bg');
+		}
+	}
+
+	// Focus-visible state
+	&:focus-visible {
+		outline: none;
+	}
+
+	// Disabled state
+	&[disabled] {
+		cursor: not-allowed;
+		background: map-get(c.$colors, 'black-12');
+		color: map-get(c.$colors, 'black-48');
+		@if ($border-line == true) {
+			border: 0;
+			padding: $padding-y ($padding-x + 1px);
+			color: map-get(c.$colors, 'black-48') !important;
+		}
+		@if $type == 'toolsIconText' {
+			border: solid 1px map-get(b.$button--backgrounds-classic, 'black-18');
+			background: map-get(c.$colors, 'black-3');
+			.icon {
+				fill: map-get(c.$colors, 'black-48');
+			}
+		}
+		@if $type == 'clear' {
+			color: map-get(c.$colors, 'black-48');
+			background: map-get(c.$colors, 'black-3');
+			border: solid 1px map-get(b.$button--backgrounds-classic, 'black-18');
+			.icon {
+				fill: map-get(c.$colors, 'black-48');
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+@use "sass:color";
+@use "text" as t;
+@use "colors" as c;
+
+$text-input--letter-spacing: map-get(t.$text--letter-spacing, 'bg');
+$text-input--placeholder-color: map-get(c.$colors, 'black-48');
+$text-input--border-color: map-get(c.$colors, 'black-24');
+$text-input--border-color-focus: map-get(c.$colors, 'sep-rt');
+$text-input--border-color-error: map-get(c.$colors, 'error');
+$text-input--border-width: 2px;
+$text-input--bg: map-get(c.$colors, 'white');
+$text-input--bg-error: #FFF3F4;
+$text-input--bg-hover: #F8F8F9;
+$text-input--bg-focus: $text-input--bg;
+
+$text-input--heights: (
+  'bg': 60px,
+  'md': 50px,
+  'sm': 40px,
+);
+$text-input--border-radius: (
+  'bg': 5px,
+  'md': 5px,
+  'sm': 5px,
+);
+$text-input--font-sizes: (
+  'bg': map-get(t.$text--size, 'bg'),
+  'md': map-get(t.$text--size, 'md'),
+  'sm': map-get(t.$text--size, 'sm'),
+);
+$text-input--padding-x: (
+  'bg': 16px,
+  'md': 16px,
+  'sm': 16px,
+);

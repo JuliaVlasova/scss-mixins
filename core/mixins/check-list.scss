@@ -1,0 +1,40 @@
+@use "../variables/check-list" as *;
+@use 'text' as *;
+@use 'font-size' as *;
+@use '../variables/colors' as *;
+
+@mixin check-box(
+  $size: 'md',
+  $bgColor: 'sep-rt',
+  $iconColor: 'white',
+  $border: null,
+) {
+  $size: map-get($icon--box, $size);
+  $border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: start;
+  width: $size;
+  height: $size;
+  border-radius: $border-radius;
+  border: 0;
+  background: map-get($colors, $bgColor);
+
+  @if $border != null {
+    border: solid 2px map-get($colors, $border);
+  }
+
+    .icon {
+      $icon-size: $size - 10px;
+      width: $icon-size;
+      height: $icon-size;
+      fill: map-get($colors, $iconColor);
+    }
+
+  @if $size == 'sm' {}
+  @if $size == 'md' {}
+  @if $size == 'lg' {}
+
+}

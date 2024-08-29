@@ -1,0 +1,56 @@
+@use  "../../mixins/text" as *;
+@use "../../variables/colors" as *;
+@use "../../mixins/breakpoint" as *;
+@use "../../mixins/mixins" as *;
+
+
+@include not-selected(en) {
+  .available {
+    @include breakpointUi(lt-md) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+
+.available{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  @include breakpointUi(lt-md) {
+    gap: 10px;
+  }
+  @include breakpointUi(lt-md) {
+    justify-content: center;
+  }
+  &__title {
+    @include text('white-48', 'xs');
+  }
+  &__items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    @include breakpointUi(lt-md) {
+      gap: 5px;
+    }
+    .item {
+      $size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      .icon {
+        width: $size;
+        height: $size;
+        fill: map-get($colors, 'white-60');
+      }
+      .title {
+        @include text('white-60', 'xs', 'bold');
+        margin: 0;
+      }
+    }
+
+  }
+}

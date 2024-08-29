@@ -1,0 +1,63 @@
+@use "../../variables/forms" as f;
+@use '../text' as t;
+
+/// example @include textInput('bg');
+
+@mixin textInput(
+  $size: 'bg',
+  $state: 'default',
+  $mode: 'onDark',
+) {
+  $height: auto;
+  $border-radius: 0;
+  $padding-x: 0;
+  $font-size: inherit;
+  $border-color: transparent;
+
+  @if($size != null) {
+    $height: map-get(f.$text-input--heights, $size);
+    $border-radius: map-get(f.$text-input--border-radius, $size);
+    $padding-x: map-get(f.$text-input--padding-x, $size);
+    $font-size: map-get(f.$text-input--font-sizes, $size);
+  }
+
+  @include t.text('main', $size);
+  height: $height;
+  width: 100%;
+  border-radius: $border-radius;
+  background-color: f.$text-input--bg;
+  border: f.$text-input--border-width solid $border-color;
+  padding: 0 $padding-x;
+  letter-spacing: f.$text-input--letter-spacing;
+  outline: none;
+  transition: border-color .15s ease, background-color .15s ease;
+  box-sizing: border-box;
+
+  @if($state == 'error') {
+    background-color: f.$text-input--bg-error;
+    border-color: f.$text-input--border-color-error;
+  }
+
+  &:-webkit-autofill {
+    border-color: f.$text-input--border-color-focus;
+    background-color: f.$text-input--bg-focus;
+  }
+  &::placeholder {
+    @include t.text('black-48', $size);
+  }
+
+  @if($mode == 'onDark') {
+
+  }
+
+  // Hover state
+  &:hover {
+    background-color: f.$text-input--bg-hover;
+  }
+
+  // Focus state
+  &:focus {
+    border-color: f.$text-input--border-color-focus;
+    background-color: f.$text-input--bg-focus;
+  }
+}

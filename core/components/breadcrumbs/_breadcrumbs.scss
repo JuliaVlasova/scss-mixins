@@ -1,0 +1,83 @@
+@use '../../variables/colors' as *;
+@use '../../mixins/mixins' as *;
+
+.breadcrumbs {
+	background: map-get($colors, 'breadcrumbs');
+	padding: 10px 26px;
+	content-visibility: auto;
+
+	@include breakpointUi(lt-md) {
+		padding: 13px 20px;
+	}
+
+	.breadcrumb {
+		display: flex;
+		list-style-type: none;
+		align-items: center;
+		flex-wrap: wrap;
+		max-width: 980px;
+		width: 100%;
+		padding: 0;
+		gap: 0 24px;
+		margin: 0 auto;
+
+		@include breakpointUi(lt-md) {
+			gap: 0 18px;
+		}
+
+		li {
+			@include text('black-48', 'sm');
+			position: relative;
+
+			@include breakpointUi(lt-md) {
+				@include text('black-48', 'xxs');
+			}
+
+			&::after {
+				content: '';
+				border: 1px solid map-get($colors, 'main');
+				border-width: 0 1px 1px 0;
+				transform: rotate(-45deg);
+				padding: 2px;
+				position: absolute;
+				right: -14px;
+				top: 50%;
+				transform: translate(0, -50%) rotate(-45deg);
+
+				@include breakpointUi(lt-md) {
+					padding: 1.2px;
+					right: -10px;
+				}
+			}
+
+			&:first-child {
+				min-width: 85px;
+
+				@include breakpointUi(lt-md) {
+					min-width: 60px;
+				}
+			}
+
+			&:last-child {
+				&::after {
+					display: none;
+				}
+			}
+
+			a {
+				text-decoration: none;
+				white-space: nowrap;
+				border: none;
+				color: map-get($colors, 'main');
+
+				&:not([class]) {
+					text-decoration: none;
+				}
+
+				span {
+					color: map-get($colors, 'main');
+				}
+			}
+		}
+	}
+}

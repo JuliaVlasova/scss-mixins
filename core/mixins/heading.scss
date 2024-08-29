@@ -1,0 +1,21 @@
+@use "../variables/heading" as h;
+
+/// Heading mixin
+/// @name Heading
+/// @group UI Components
+/// @param {string} $size - Heading size. ('1-prod' - '6')
+
+@mixin heading(
+  $size: null,
+) {
+  margin-top: 0;
+  font-size: map-get(h.$heading--font-size, $size);
+  line-height: map-get(h.$heading--line-heights, $size);
+  letter-spacing: map-get(h.$headings--letter-spacing, $size);
+  font-weight: h.$heading-font-weight;
+  //color: h.$heading-color;
+
+  &:link {
+    color: h.$heading-color;
+  }
+}

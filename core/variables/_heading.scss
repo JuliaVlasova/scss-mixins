@@ -1,0 +1,49 @@
+@use "colors" as c;
+
+$heading-color: map-get(c.$colors, "main");
+$heading-font-weight: 700;
+
+$heading--font-size: (
+    "1-extra": 120px,
+    "1-max": 100px,
+    "1-prod": 90px,
+    "1-xxl": 70px,
+    "1-xl": 58px,
+    "1-lg": 48px,
+    "2": 42px,
+    "2-s": 36px,
+    "3": 32px,
+    "4": 28px,
+    "5": 24px,
+    "6": 20px,
+);
+
+$heading--line-heights: (
+    "1-extra": 100px,
+    "1-max": 110px,
+    "1-prod": 100px,
+    "1-xxl": 76px,
+    "1-xl": 62px,
+    "1-lg": 52px,
+    "2": 48px,
+    "2-s": 42px,
+    "3": 36px,
+    "4": 32px,
+    "5": 28px,
+    "6": 26px,
+);
+
+$headings--letter-spacing: (
+    "1-extra": -0.03em,
+    "1-max": -0.03em,
+    "1-prod": -0.03em,
+    "1-xxl": -0.03em,
+    "1-xl": -0.03em,
+    "1-lg": -0.03em,
+    "2": -0.02em,
+    "2-s": -0.02em,
+    "3": -0.02em,
+    "4": revert,
+    "5": revert,
+    "6": revert,
+);

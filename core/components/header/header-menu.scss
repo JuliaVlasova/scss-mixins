@@ -1,0 +1,4 @@
+@use "../../mixins/mixins" as *;
+@use "../../base/lang" as *;
+
+@include top-menu('top-menu-dark', 'sep-wa', $border-line: true);

@@ -1,0 +1,83 @@
+@use '../mixins/breakpoint' as *;
+@use '../mixins/heading' as *;
+@use '../mixins/text' as *;
+@use 'lang-mixin' as *;
+
+@include not-selected(en) {
+	.top-menu__download {
+		word-break: keep-all;
+	}
+	.top-menu__item {
+		word-break: keep-all;
+		white-space: nowrap;
+	}
+	.top-menu__hidden-list {
+		width: max-content;
+		@include breakpointUi(md) {
+			width: auto;
+		}
+		@include breakpointUi(lt-md) {
+			width: auto;
+		}
+	}
+	.logos-g2__button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@include lang-select(ru) {
+	.available {
+		@include breakpointUi(lt-md) {
+			gap: 3px;
+		}
+	}
+	@include footer-bottom();
+}
+@include lang-select(pt) {
+	@include footer-bottom();
+	.footer__section {
+		gap: 50px;
+	}
+}
+@include lang-select(es) {
+	@include footer-bottom();
+}
+@include lang-select(pl) {
+	@include footer-bottom();
+}
+@include lang-select(ko) {
+	.footer__copyright {
+		@include breakpointUi(lt-md) {
+			word-break: keep-all;
+		}
+	}
+}
+@include lang-select(ja) {
+	.first-screen__container {
+		.heading {
+			.title {
+				@include heading('1-xxl');
+				@include breakpointUi(md) {
+					@include heading('1-xl');
+				}
+				@include breakpointUi(lt-md) {
+					@include heading('2');
+				}
+				span {
+					display: inline;
+				}
+			}
+			.sub {
+				@include text('secondary-light', 'xl');
+				@include breakpointUi(md) {
+					@include text('secondary-light', 'lg');
+				}
+				@include breakpointUi(lt-md) {
+					@include text('secondary-light', 'bg');
+				}
+			}
+		}
+	}
+}

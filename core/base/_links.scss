@@ -1,0 +1,14 @@
+@use "../variables/colors" as *;
+
+a {
+  color: map-get($colors, 'link');
+  text-decoration: underline;
+
+  //&:visited:not(.no-visited) {
+  //  color: map-get($colors, 'link-visited')
+  //}
+
+  &:hover {
+    text-decoration: none;
+  }
+}

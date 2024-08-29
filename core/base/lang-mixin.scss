@@ -1,0 +1,55 @@
+/// autor @Roman Morozov
+
+@mixin footer-bottom {
+  .footer__bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+    .footer__policy-links {
+      .footer__link {
+        text-transform: capitalize;
+      }
+    }
+  }
+}
+
+/// select lang,
+/// default select - en
+/// example - @include lang-select(ru) {@content}
+@mixin lang-select(
+  $lang: en,
+)
+{
+  html {
+    &:lang(#{$lang}) {
+      @content
+    }
+  }
+}
+
+/// not selected lang,
+/// @descriptions: global styles - all languages except the selected language
+@mixin not-selected(
+  $lang: en,
+)
+{
+  html {
+    &:not([lang=#{$lang}]) {
+      @content
+    }
+  }
+}
+
+/// multi select language,
+/// example - @include multi-select(ru, de, fr, pl, ja, ko) {@content}
+@mixin multi-select($langValue...) {
+  html {
+    @each $i in $langValue {
+      &:lang(#{$i}) {
+        @content
+      }
+    }
+  }
+}
+
